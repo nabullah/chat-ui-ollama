@@ -20,49 +20,6 @@ Before running this application, you need to have the following installed:
 3. **Angular CLI** (v20 or later)
 4. **Ollama** - Follow the installation instructions at [Ollama's official website](https://ollama.ai)
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/duxor/angular-ollama.git
-   cd angular-ollama
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Make sure Ollama is running:
-   ```bash
-   ollama serve
-   ```
-
-4. Pull at least one model (if you haven't already):
-   ```bash
-   ollama pull gpt-oss:20b
-   ```
-
-## Development Server
-
-To start the development server:
-
-```bash
-npm start
-```
-
-Navigate to `http://localhost:4200/` in your browser. The application will automatically reload if you change any of the source files.
-
-## Building for Production
-
-To build the project for production:
-
-```bash
-npm run build
-```
-
-The build artifacts will be stored in the `dist/` directory.
-
 ## Architecture and Design
 
 ### State Management
@@ -266,3 +223,6 @@ To execute the unit tests:
 ```bash
 npm test
 ```
+
+## CREDITS
+Original project: https://github.com/duxor/angular-ollama
