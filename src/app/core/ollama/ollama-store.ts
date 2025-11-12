@@ -7,7 +7,7 @@ import { StorageFacade } from '../storage/storage-facade';
 export class OllamaStore {
   private readonly storageFacade = inject(StorageFacade);
   private readonly localStorageKey = 'ollamaModel';
-  private readonly defaultModel = 'llama3.1';
+  private readonly defaultModel = 'gpt-oss:20b';
 
   private readonly $currentModel = signal<string>(this.loadSavedModel());
 

@@ -16,9 +16,9 @@ describe('OllamaFacade', () => {
     ollamaStoreMock = jasmine.createSpyObj('OllamaStore', ['currentModel', 'saveModel']);
 
     // Configure default mock behavior
-    ollamaApiMock.getAvailableModels.and.returnValue(of(['llama3.1', 'gemma3', 'mistral']));
+    ollamaApiMock.getAvailableModels.and.returnValue(of(['gpt-oss:20b', 'gemma3', 'mistral']));
     ollamaApiMock.chat.and.returnValue(of('Mock response'));
-    ollamaStoreMock.currentModel.and.returnValue('llama3.1');
+    ollamaStoreMock.currentModel.and.returnValue('gpt-oss:20b');
 
     TestBed.configureTestingModule({
       providers: [
@@ -37,7 +37,7 @@ describe('OllamaFacade', () => {
   });
 
   it('should get current model from OllamaStore', () => {
-    expect(service.currentModel()).toBe('llama3.1');
+    expect(service.currentModel()).toBe('gpt-oss:20b');
     expect(ollamaStoreMock.currentModel).toHaveBeenCalled();
   });
 
@@ -48,7 +48,7 @@ describe('OllamaFacade', () => {
 
   it('should load available models from OllamaApi', () => {
     service.loadAvailableModels().subscribe(models => {
-      expect(models).toEqual(['llama3.1', 'gemma3', 'mistral']);
+      expect(models).toEqual(['gpt-oss:20b', 'gemma3', 'mistral']);
     });
     expect(ollamaApiMock.getAvailableModels).toHaveBeenCalled();
   });
@@ -58,7 +58,7 @@ describe('OllamaFacade', () => {
     service.chat(messages).subscribe((response: string) => {
       expect(response).toBe('Mock response');
     });
-    expect(ollamaApiMock.chat).toHaveBeenCalledWith(messages, 'llama3.1');
+    expect(ollamaApiMock.chat).toHaveBeenCalledWith(messages, 'gpt-oss:20b');
   });
 
   it('should chat using OllamaApi with specified model', () => {

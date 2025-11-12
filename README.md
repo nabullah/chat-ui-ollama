@@ -40,7 +40,7 @@ Before running this application, you need to have the following installed:
 
 4. Pull at least one model (if you haven't already):
    ```bash
-   ollama pull llama3.1
+   ollama pull gpt-oss:20b
    ```
 
 ## Development Server
@@ -80,7 +80,7 @@ This separation of concerns makes the code more maintainable and testable.
 This application connects to a local Ollama instance running on `http://localhost:11434/api`. Make sure:
 
 1. Ollama is running before starting the application
-2. You have downloaded at least one model (for example `mistral` or `llama3.1`)
+2. You have downloaded at least one model (for example `mistral` or `gpt-oss:20b`)
 3. Your firewall allows connections to port 11434
 
 #### Auto-detection of Available Models
@@ -266,32 +266,3 @@ To execute the unit tests:
 ```bash
 npm test
 ```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- [Angular](https://angular.dev) - The web framework used
-- [Ollama](https://ollama.ai) - For providing the AI capabilities
-- [TailwindCSS](https://tailwindcss.com) - For the styling
-- [ngx-markdown](https://github.com/jfcere/ngx-markdown) - For markdown rendering
-
-# Support
-
-If you need any help with setting up or configuring the environment, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/dusanperisic/).
-
-If you find this project helpful and would like to support its development, you can buy me a coffee:
-
-<a href="https://www.buymeacoffee.com/duxor" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>

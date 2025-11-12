@@ -23,7 +23,7 @@ describe('ChatPage', () => {
     updatedAt: new Date()
   };
 
-  const mockModels = ['llama3.1', 'gemma3', 'mistral'];
+  const mockModels = ['gpt-oss:20b', 'gemma3', 'mistral'];
 
   beforeEach(async () => {
     // Create mock services
@@ -41,9 +41,9 @@ describe('ChatPage', () => {
 
     mockOllamaFacade = jasmine.createSpyObj('OllamaFacade', ['saveModel', 'currentModel', 'loadAvailableModels'], {
       $availableModels: signal(mockModels),
-      $selectedModel: signal('llama3.1')
+      $selectedModel: signal('gpt-oss:20b')
     });
-    mockOllamaFacade.currentModel.and.returnValue('llama3.1');
+    mockOllamaFacade.currentModel.and.returnValue('gpt-oss:20b');
     mockOllamaFacade.loadAvailableModels.and.returnValue(of(mockModels));
 
     await TestBed.configureTestingModule({
@@ -74,7 +74,7 @@ describe('ChatPage', () => {
 
   it('should initialize selected model from OllamaFacade', () => {
     // @ts-expect-error: Accessing protected member in test
-    expect(component.$selectedModel()).toBe('llama3.1');
+    expect(component.$selectedModel()).toBe('gpt-oss:20b');
   });
 
   it('should create a new session when createNewSession is called', () => {
@@ -95,7 +95,7 @@ describe('ChatPage', () => {
   it('should save model when model is changed', () => {
     component.onModelChange('gemma3');
     // @ts-expect-error: Accessing protected member in test
-    expect(component.$selectedModel()).toBe('llama3.1');
+    expect(component.$selectedModel()).toBe('gpt-oss:20b');
     expect(mockOllamaFacade.saveModel).toHaveBeenCalledWith('gemma3');
   });
 
@@ -120,7 +120,7 @@ describe('ChatPage', () => {
 
     // Expect empty selected model
     // @ts-expect-error: Accessing protected member in test
-    expect(component.$selectedModel()).toBe('llama3.1');
+    expect(component.$selectedModel()).toBe('gpt-oss:20b');
   });
 
   it('should handle model initialization with no saved model', () => {

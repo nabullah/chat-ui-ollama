@@ -12,7 +12,7 @@ describe('OllamaStore', () => {
     storageFacadeMock = jasmine.createSpyObj('StorageFacade', ['getItem', 'setItem']);
 
     // Default behavior - return the default model
-    storageFacadeMock.getItem.and.returnValue('llama3.1');
+    storageFacadeMock.getItem.and.returnValue('gpt-oss:20b');
 
     TestBed.configureTestingModule({
       providers: [
@@ -46,7 +46,7 @@ describe('OllamaStore', () => {
 
     // Verify the model was loaded from storage
     expect(service.currentModel()).toBe('gemma3');
-    expect(storageFacadeMock.getItem).toHaveBeenCalledWith('ollamaModel', 'llama3.1');
+    expect(storageFacadeMock.getItem).toHaveBeenCalledWith('ollamaModel', 'gpt-oss:20b');
   });
 
   it('should initialize with the default model if none in storage', () => {
@@ -57,12 +57,12 @@ describe('OllamaStore', () => {
     service = TestBed.inject(OllamaStore);
 
     // Verify the default model was used
-    expect(service.currentModel()).toBe('llama3.1');
+    expect(service.currentModel()).toBe('gpt-oss:20b');
   });
 
   it('should save the model to storage and update the signal', () => {
     // Initial state
-    storageFacadeMock.getItem.and.returnValue('llama3.1');
+    storageFacadeMock.getItem.and.returnValue('gpt-oss:20b');
     service = TestBed.inject(OllamaStore);
 
     // Save a new model

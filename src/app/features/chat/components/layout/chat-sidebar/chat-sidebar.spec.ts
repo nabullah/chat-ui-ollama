@@ -48,9 +48,9 @@ describe('ChatSidebar', () => {
   });
 
   it('should have the expected structure with header, body, and footer', () => {
-    const header = fixture.debugElement.query(By.css('div.p-4'));
+    const header = fixture.debugElement.query(By.css('div.border-b'));
     const body = fixture.debugElement.query(By.css('div.flex-1'));
-    const footer = fixture.debugElement.query(By.css('div.p-3'));
+    const footer = fixture.debugElement.query(By.css('div.border-t'));
 
     expect(header).toBeTruthy();
     expect(body).toBeTruthy();
@@ -59,7 +59,6 @@ describe('ChatSidebar', () => {
 });
 
 describe('ChatSidebar with content projection', () => {
-  let hostComponent: TestHostComponent;
   let hostFixture: ComponentFixture<TestHostComponent>;
 
   beforeEach(async () => {
@@ -70,7 +69,6 @@ describe('ChatSidebar with content projection', () => {
     .compileComponents();
 
     hostFixture = TestBed.createComponent(TestHostComponent);
-    hostComponent = hostFixture.componentInstance;
     hostFixture.detectChanges();
   });
 

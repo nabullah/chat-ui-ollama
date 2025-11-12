@@ -31,14 +31,14 @@ describe('OllamaApi', () => {
   it('should fetch available models', () => {
     const mockModels = {
       models: [
-        { name: 'llama3.1' },
+        { name: 'gpt-oss:20b' },
         { name: 'gemma3' },
         { name: 'mistral' }
       ]
     };
 
     service.getAvailableModels().subscribe(models => {
-      expect(models).toEqual(['llama3.1', 'gemma3', 'mistral']);
+      expect(models).toEqual(['gpt-oss:20b', 'gemma3', 'mistral']);
     });
 
     const req = httpMock.expectOne('http://localhost:11434/api/tags');
@@ -49,7 +49,7 @@ describe('OllamaApi', () => {
   it('should chat with the specified model', () => {
     const mockResponse = '{"message":{"content":"Hello"}}';
     const messages = [{ role: 'user', content: 'Say hello' }];
-    const model = 'llama3.1';
+    const model = 'gpt-oss:20b';
 
     service.chat(messages, model).subscribe((response: string) => {
       expect(response).toBe('Hello');
@@ -58,7 +58,7 @@ describe('OllamaApi', () => {
     const req = httpMock.expectOne('http://localhost:11434/api/chat');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
-      model: 'llama3.1',
+      model: 'gpt-oss:20b',
       messages: messages,
       options: {
         temperature: 0.7
