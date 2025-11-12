@@ -1,0 +1,76 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+/* Base styles - reduced by ~50% to simulate 50% zoom */
+html {
+    font-size: 12px; /* Reduced from 16px */
+}
+
+/* Responsive font sizes for larger screens - reduced accordingly */
+@media (min-width: 1440px) {
+    html {
+        font-size: 14px; /* Reduced from 18px */
+    }
+}
+
+@media (min-width: 2560px) {
+    html {
+        font-size: 16px; /* Reduced from 20px */
+    }
+}
+
+@media (min-width: 3840px) {
+    html {
+        font-size: 18px; /* Reduced from 24px */
+    }
+}
+
+/* Custom utility classes for responsive elements - reduced sizes */
+.responsive-icon-sm {
+    @apply h-3 w-3; /* Reduced from h-5 w-5 */
+}
+
+@media (min-width: 1440px) {
+    .responsive-icon-sm {
+        @apply h-4 w-4; /* Reduced from h-6 w-6 */
+    }
+}
+
+@media (min-width: 2560px) {
+    .responsive-icon-sm {
+        @apply h-5 w-5; /* Reduced from h-7 w-7 */
+    }
+}
+
+@media (min-width: 3840px) {
+    .responsive-icon-sm {
+        @apply h-6 w-6; /* Reduced from h-8 w-8 */
+    }
+}
+
+.responsive-icon-md {
+    @apply h-5 w-5; /* Reduced from h-8 w-8 */
+}
+
+@media (min-width: 1440px) {
+    .responsive-icon-md {
+        @apply h-6 w-6; /* Reduced from h-10 w-10 */
+    }
+}
+
+@media (min-width: 2560px) {
+    .responsive-icon-md {
+        @apply h-7 w-7; /* Reduced from h-12 w-12 */
+    }
+}
+
+@media (min-width: 3840px) {
+    .responsive-icon-md {
+        @apply h-8 w-8; /* Reduced from h-14 w-14 */
+    }
+}
+
+code {
+    white-space: break-spaces;
+}

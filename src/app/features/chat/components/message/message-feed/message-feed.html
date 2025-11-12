@@ -1,0 +1,15 @@
+<div #feedContainer class="h-full p-2 md:p-2.5 lg:p-3 space-y-3 md:space-y-4 lg:space-y-5 overflow-y-auto">
+  @if (messages().length === 0) {
+    <nexus-welcome-section (sendMessage)="onSuggestionClick($event)" />
+  }
+
+  @if (messages().length > 0) {
+    @for (message of messages(); track message.id) {
+      <nexus-message-card [message]="message" />
+    }
+
+    @if (isLoading()) {
+      <nexus-ai-typing-indicator />
+    }
+  }
+</div>

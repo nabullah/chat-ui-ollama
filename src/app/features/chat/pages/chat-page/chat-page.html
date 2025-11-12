@@ -1,0 +1,36 @@
+<div class="flex h-screen bg-gray-900 text-white overflow-hidden">
+  <nexus-chat-sidebar>
+    <nexus-conversation-list
+      sidebar-body
+      [conversations]="chatService.$sessions()"
+      [activeSessionId]="chatService.activeSession()?.id ?? null"
+      (setActiveSession)="setActiveSession($event)"
+      (deleteSession)="deleteSession($event)"
+      (createNewSession)="createNewSession()"
+    />
+
+    <select
+      sidebar-footer
+      class="w-full bg-gray-700 border border-gray-600 rounded-md py-0.5 px-1 text-xs md:text-sm lg:text-base text-white focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+      [ngModel]="$selectedModel()"
+      (ngModelChange)="onModelChange($event)"
+    >
+      @for (model of $availableModels(); track model) {
+        <option [value]="model">{{ model }}</option>
+      }
+    </select>
+  </nexus-chat-sidebar>
+
+  <nexus-chat-panel class="flex-1" [title]="chatService.activeSession()?.title || 'New Chat'">
+    <nexus-message-feed
+      class="flex-1 overflow-y-auto"
+      [messages]="chatService.activeSession()?.messages || []"
+      [isLoading]="chatService.$isLoading()"
+      (sendMessage)="sendMessage($event)"
+    />
+
+    <div class="p-2 border-t border-gray-700">
+      <nexus-message-form (sendMessage)="sendMessage($event)" />
+    </div>
+  </nexus-chat-panel>
+</div>
