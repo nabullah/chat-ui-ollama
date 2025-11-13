@@ -1,33 +1,26 @@
-<div class="flex flex-col" [class.items-end]="isUser">
-  <div 
-    class="max-w-xs md:max-w-sm lg:max-w-md rounded-2xl p-2 md:p-2.5 lg:p-3 mb-0.5 md:mb-1"
-    [class.bg-blue-600]="isUser"
-    [class.bg-gray-800]="!isUser"
-    [class.text-white]="isUser"
-    [class.text-gray-100]="!isUser"
-    [class.rounded-tr-sm]="isUser"
-    [class.rounded-tl-sm]="!isUser"
+<div class="message-container">
+  <div
+    class="rounded-2xl p-6 mb-0.5 md:mb-2 bg-gray-800 text-gray-100 rounded-tl-sm"
   >
     <!--#region Avatar and Name -->
-    <div class="flex items-center mb-1">
-      <div 
-        class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 rounded-full flex items-center justify-center mr-1 md:mr-1.5"
-        [class.bg-blue-700]="isUser"
-        [class.bg-purple-700]="!isUser"
+    <div class="flex items-center mb-2">
+      <div
+        class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center mr-2 md:mr-3 bg-purple-700"
       >
-        @if (isUser) {
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 md:h-3 md:w-3 lg:h-3.5 lg:w-3.5 text-white" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-          </svg>
-        } @else {
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 md:h-3 md:w-3 lg:h-3.5 lg:w-3.5 text-white" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-          </svg>
-        }
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 text-white"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+          <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+        </svg>
       </div>
       <div>
-        <div class="font-medium text-sm md:text-base lg:text-lg">{{ isUser ? 'You' : 'NexusChat' }}</div>
+        <div class="font-medium text-sm md:text-base lg:text-lg">
+          {{ isUser ? 'You' : 'NexusChat' }}
+        </div>
         <div class="text-xs opacity-70">{{ formattedTime }}</div>
       </div>
     </div>
@@ -35,6 +28,13 @@
 
     <!--#region Message Content -->
     <markdown
+      emoji
+      katex
+      mermaid
+      clipboard
+      lineNumbers
+      lineHighlight
+      commandLine
       class="markdown-body whitespace-break-spaces"
       [data]="message().content"
     />

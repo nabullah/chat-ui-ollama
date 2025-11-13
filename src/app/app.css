@@ -1,0 +1,72 @@
+::ng-deep .markdown-body table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+/* CAPTION - table title */
+::ng-deep .markdown-body caption {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 16px;
+  text-align: center;
+}
+
+::ng-deep .markdown-body th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+::ng-deep .markdown-body td {
+  padding: 12px 16px;
+}
+
+/* Last row no bottom border */
+::ng-deep .markdown-body tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive: Stack on small screens */
+@media (max-width: 600px) {
+  ::ng-deep .markdown-body table,
+  ::ng-deep .markdown-body thead,
+  ::ng-deep .markdown-body tbody,
+  ::ng-deep .markdown-body th,
+  ::ng-deep .markdown-body td,
+  ::ng-deep .markdown-body tr {
+    display: block;
+  }
+
+  ::ng-deep .markdown-body thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  ::ng-deep .markdown-body tr {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  ::ng-deep .markdown-body td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  ::ng-deep .markdown-body td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    font-weight: bold;
+    text-align: left;
+  }
+}
