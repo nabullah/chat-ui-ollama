@@ -6,9 +6,10 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OllamaApi {
-  private readonly ollamaBaseUrl = 'http://localhost:11434/api';
+  private readonly ollamaBaseUrl = 'http://localhost:3000/api/ollama';
   private readonly ollamaChatUrl = `${this.ollamaBaseUrl}/chat`;
-  private readonly ollamaTagsUrl = `${this.ollamaBaseUrl}/tags`;
+  private readonly ollamaTagsUrl = `${this.ollamaBaseUrl}/models`;
+  private readonly ollamaGenerateUrl = `${this.ollamaBaseUrl}/generate`;
   private readonly httpClient = inject(HttpClient);
 
   getAvailableModels(): Observable<string[]> {
@@ -43,5 +44,15 @@ export class OllamaApi {
       // Remove <think> tags and trim the final response
       return mappedResponse.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
     }));
+  }
+
+  generate(prompt: string, model: string): Observable<string> {
+    return this.httpClient.post<{ response: string }>(this.ollamaGenerateUrl, {
+      model: model,
+      prompt: prompt,
+      stream: false
+    }).pipe(
+      map(response => response.response.trim())
+    );
   }
 }

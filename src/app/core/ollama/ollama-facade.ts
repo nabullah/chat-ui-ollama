@@ -55,4 +55,9 @@ export class OllamaFacade {
     const modelToUse = model || this.currentModel();
     return this.ollamaApi.chat(messages, modelToUse);
   }
+
+  generate(prompt: string, model?: string): Observable<string> {
+    const modelToUse = model || this.currentModel();
+    return this.ollamaApi.generate(prompt, modelToUse);
+  }
 }

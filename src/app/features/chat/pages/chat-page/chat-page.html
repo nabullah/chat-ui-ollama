@@ -21,7 +21,12 @@
     </select>
   </nexus-chat-sidebar>
 
-  <nexus-chat-panel class="flex-1" [title]="chatService.activeSession()?.title || 'New Chat'">
+  <nexus-chat-panel 
+    class="flex-1" 
+    [title]="chatService.activeSession()?.title || 'New Chat'"
+    [withContext]="$withContext()"
+    (contextChange)="onContextChange($event)"
+  >
     <nexus-message-feed
       class="flex-1 overflow-y-auto"
       [messages]="chatService.activeSession()?.messages || []"

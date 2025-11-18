@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'nexus-chat-panel',
@@ -8,4 +8,11 @@ import { Component, input } from '@angular/core';
 })
 export class ChatPanel {
   title = input.required<string>();
+  withContext = input<boolean>(true);
+  contextChange = output<boolean>();
+
+  onContextChange(event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.contextChange.emit(checked);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatSidebar } from '../../components/layout/chat-sidebar/chat-sidebar';
@@ -22,6 +22,7 @@ export class ChatPage implements OnInit {
 
   protected readonly $availableModels = this.ollamaFacade.$availableModels;
   protected readonly $selectedModel = this.ollamaFacade.$selectedModel;
+  protected readonly $withContext = signal<boolean>(true);
 
   createNewSession(): void {
     this.chatService.createNewSession();
@@ -44,6 +45,10 @@ export class ChatPage implements OnInit {
   }
 
   sendMessage(content: string): void {
-    this.chatService.sendMessage(content).subscribe();
+    this.chatService.sendMessage(content, this.$withContext()).subscribe();
+  }
+
+  onContextChange(withContext: boolean): void {
+    this.$withContext.set(withContext);
   }
 }
